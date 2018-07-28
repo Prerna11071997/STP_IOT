@@ -1,0 +1,3 @@
+".\Objects\ultra2.obj" 
+TO ".\Objects\blcd2" 
+PRINT(".\Listings\blcd2.m51") RAMSIZE(256) 

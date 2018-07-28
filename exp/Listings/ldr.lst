@@ -1,0 +1,45 @@
+C51 COMPILER V9.56.0.0   LDR                                                               06/14/2017 11:48:39 PAGE 1   
+
+
+C51 COMPILER V9.56.0.0, COMPILATION OF MODULE LDR
+OBJECT MODULE PLACED IN .\Objects\ldr.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ldr.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\ldr.l
+                    -st) TABS(2) OBJECT(.\Objects\ldr.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          sbit ldr=P3^4;
+   3          sbit ir=P3^5;
+   4          
+   5          void main(void){
+   6   1        TMOD=0x44;
+   7   1        TH1=0;
+   8   1        TL1=0;
+   9   1        TH0=0;
+  10   1        TL0=0;
+  11   1        TR0=1;
+  12   1        TR1=1;
+  13   1        P0=TL0;
+  14   1        
+  15   1        while(1){
+  16   2          P0=TL0;
+  17   2          P3=TL1;
+  18   2          
+  19   2        }
+  20   1        
+  21   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     27    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

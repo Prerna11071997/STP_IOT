@@ -1,0 +1,3 @@
+".\Objects\ultrasonic1.obj" 
+TO ".\Objects\ultra2" 
+PRINT(".\Listings\ultra2.m51") RAMSIZE(256) 

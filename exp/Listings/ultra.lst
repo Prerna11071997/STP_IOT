@@ -1,0 +1,105 @@
+C51 COMPILER V9.56.0.0   ULTRA                                                             06/16/2017 15:31:51 PAGE 1   
+
+
+C51 COMPILER V9.56.0.0, COMPILATION OF MODULE ULTRA
+OBJECT MODULE PLACED IN .\Objects\ultra.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ultra.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\ult
+                    -ra.lst) TABS(2) OBJECT(.\Objects\ultra.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          
+   3          int cms;
+   4          sbit trig=P3^5;
+   5          sbit RS=P2^0;
+   6          sbit EN=P2^2;
+   7          
+   8          void delay(unsigned int msec)
+   9          {
+  10   1        int i,j;
+  11   1        for(i=0;i<msec;i++)
+  12   1        for(j=0;j<1275;j++);
+  13   1      }
+  14          
+  15          
+  16          void lcd_cmd(unsigned char item){
+  17   1        P0=item;
+  18   1        RS=0;
+  19   1        EN=1;
+  20   1        delay(1);
+  21   1        EN=0;
+  22   1      
+  23   1      }
+  24          
+  25          void lcd_data(unsigned char str){
+  26   1        
+  27   1        int i=0;
+  28   1        while(str[i]!='\0'){
+*** ERROR C216 IN LINE 28 OF ultra.c: subscript on non-array or too many dimensions
+  29   2          lcd_data(str[i]);
+  30   2          i++;
+  31   2          delay(1);
+  32   2        
+  33   2        }
+  34   1      }
+  35          
+  36          void send_pulse(){
+  37   1        TH0=0x00;
+  38   1        TL0=0x00;
+  39   1        trig=1;
+  40   1        delay(5);
+  41   1        trig=0;
+  42   1      
+  43   1      }
+  44          
+  45          unsigned int get range(){
+*** ERROR C129 IN LINE 45 OF ultra.c: missing ';' before 'range'
+  46            long int timer_val;
+  47            send_pulse();
+  48            while(!INT0);
+  49            while(INT0);
+  50            
+  51            timer_val=(TH0<<8)+TL0;
+  52            
+C51 COMPILER V9.56.0.0   ULTRA                                                             06/16/2017 15:31:51 PAGE 2   
+
+  53            lcd_cmd(0x81);
+  54            lcd_data_string("output");
+  55            lcd_cmd(0x82);
+  56            if(timer_val<38000){
+  57              cms=timer_val/59;
+  58              if(cms!=0)
+  59              {
+  60                lcd_data(cms);
+  61              }
+  62            
+  63            }else{
+  64            lcd_cmd(0x06);
+  65            lcd_data_string("out of range");
+  66            }
+  67            return cms;
+  68          }
+  69          
+  70          void main(){
+  71            cmdtolcd(0x38);
+  72              delay(50);
+  73              cmdtolcd(0x0E);
+  74              delay(80);
+  75              cmdtolcd(0x01);
+  76              delay(80);
+  77              cmdtolcd(0x81);
+  78              delay(80);
+  79            lcd_data_string("start");
+  80            delay(20);
+  81            TMOD=0x44;
+  82            TR0=1;
+  83            TH0=0x00;
+  84            TL0=0x00;
+  85            while(1){
+  86            get_range();
+  87              delay(2);
+  88            }
+  89          }
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  2 ERROR(S)

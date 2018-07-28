@@ -1,0 +1,113 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        06/15/2017  11:44:28  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\test1.obj, .\Objects\test2.obj TO .\Objects\test1 PRINT (.\Listings\test1.m51) RAM
+>> SIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\test1.obj (TEST1)
+  .\Objects\test2.obj (TEST2)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\Objects\test1 (TEST1)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     0025H     UNIT         ?PR?MAIN?TEST1
+            CODE    0825H     000CH     UNIT         ?C_C51STARTUP
+            CODE    0831H     000BH     UNIT         ?PR?MAIN?TEST2
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\test1 (TEST1)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?TEST1
+
+
+
+IGNORED SYMBOLS:
+   MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\test1 (TEST1)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        TEST1
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00B0H         PUBLIC        P3
+  C:0800H         PUBLIC        main
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/15/2017  11:44:28  PAGE 2
+
+
+  B:00B0H.3       PUBLIC        Led1
+  B:00B0H.2       PUBLIC        Led2
+  -------         PROC          MAIN
+  -------         DO            
+  D:0006H         SYMBOL        x
+  -------         ENDDO         
+  C:0800H         LINE#         6
+  C:0800H         LINE#         8
+  C:0802H         LINE#         9
+  C:0804H         LINE#         10
+  C:0812H         LINE#         11
+  C:0814H         LINE#         12
+  C:0816H         LINE#         13
+  C:0824H         LINE#         14
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        TEST1
+
+  -------         MODULE        TEST2
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00B0H         PUBLIC        P3
+  C:0831H         PUBLIC        main
+  B:00B0H.3       PUBLIC        switch1
+  B:00B0H.2       PUBLIC        Led1
+  -------         PROC          MAIN
+  C:0831H         LINE#         5
+  C:0831H         LINE#         6
+  C:0831H         LINE#         7
+  C:0834H         LINE#         8
+  C:0836H         LINE#         9
+  C:0838H         LINE#         10
+  C:0838H         LINE#         11
+  C:083AH         LINE#         12
+  C:083AH         LINE#         14
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        TEST2
+
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  MAIN
+    MODULE:  .\Objects\test2.obj (TEST2)
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MAIN?TEST2
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0030H BYTE ( 2%) *
+******************************************************************************
+
+Program Size: data=9.0 xdata=0 code=63
+LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  1 ERROR(S)

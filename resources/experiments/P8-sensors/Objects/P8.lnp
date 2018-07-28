@@ -1,0 +1,3 @@
+".\Objects\P8.obj" 
+TO ".\Objects\P8" 
+PRINT(".\Listings\P8.m51") RAMSIZE(256) 

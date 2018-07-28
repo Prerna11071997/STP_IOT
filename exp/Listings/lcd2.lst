@@ -1,0 +1,137 @@
+C51 COMPILER V9.56.0.0   LCD2                                                              06/15/2017 13:47:00 PAGE 1   
+
+
+C51 COMPILER V9.56.0.0, COMPILATION OF MODULE LCD2
+OBJECT MODULE PLACED IN .\Objects\lcd2.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE lcd2.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\lcd2
+                    -.lst) TABS(2) OBJECT(.\Objects\lcd2.obj)
+
+line level    source
+
+   1          
+   2          #include<reg51.h>
+   3          //sfr info=0x80;
+   4          sbit RS=P2^0;
+   5          sbit EN=P2^2;
+   6          void cmdtolcd(unsigned char cmd);
+   7          void datatolcd(unsigned char info[6]);
+   8          void delay(unsigned int x);
+   9          
+  10          void main(){
+  11   1      //  unsigned int x;
+  12   1        char arr[10]={'P' , 'R', 'E', 'R', 'N', 'A'};
+  13   1        
+  14   1        while(1){
+  15   2          cmdtolcd(0x38);
+  16   2          delay(50);
+  17   2          cmdtolcd(0x0E);
+  18   2          delay(80);
+  19   2          cmdtolcd(0x01);
+  20   2          delay(80);
+  21   2          cmdtolcd(0x80); //to print in the second line the use 0xC0
+  22   2          delay(80);
+  23   2          datatolcd(arr);
+  24   2          delay(100);
+  25   2      }
+  26   1        }
+  27          
+  28          void cmdtolcd(unsigned char cmd){
+  29   1        P0=cmd;
+  30   1        RS=0;
+  31   1        EN=1;
+  32   1        delay(1);
+  33   1        EN=0;
+  34   1      }
+  35          void datatolcd(unsigned char info[6]){
+  36   1        int i;
+  37   1        for(i=0;i<=5;++i){
+  38   2        P0= info[i];
+  39   2        RS=1;
+  40   2        EN=1;
+  41   2        delay(1);
+  42   2        EN=0;
+  43   2        }
+  44   1      }
+  45          
+  46          void delay(unsigned int x){
+  47   1        unsigned int i,j;
+  48   1        for(i=0;i<x;i++)
+  49   1        {
+  50   2          for(j=0;j<1275;j++);
+  51   2        }
+  52   1      }
+  53          /*#include<reg51.h>
+  54          sfr dat=0x80;
+C51 COMPILER V9.56.0.0   LCD2                                                              06/15/2017 13:47:00 PAGE 2   
+
+  55          sbit RS=P2^0;
+  56          sbit EN=P2^2;
+  57          void cmdtolcd(unsigned char cmd);
+  58          void datatolcd(unsigned char data);
+  59          void delay();
+  60          
+  61          void main(){
+  62            unsigned int x;
+  63            char arr[10]={'P' , 'R', 'E', 'R', 'N', 'A'};
+  64            
+  65            while(1){
+  66              cmdtolcd(0x38);
+  67              delay(250)
+  68              cmdtolcd(0x0E);
+  69              delay(250);
+  70              cmdtolcd(0x01);
+  71              delay(250);
+  72              cmdtolcd(0x80); //to print in the second line the use 0xC0
+  73              delay(1000);
+  74              datatolcd('S');
+  75              delay(1000);
+  76              datatolcd('T');
+  77              delay(1000);
+  78              datatolcd('P');
+  79              delay(1000);
+  80              for(x=0;x<1000;x++){
+  81                delay(1000);
+  82              }     
+  83            }
+  84          }
+  85          
+  86          void cmdtolcd(unsigned char cmd){
+  87            P0=cmd;
+  88            RS=0;
+  89            EN=1;
+  90            delay(250);
+  91            EN=0;
+  92          }
+  93          void datatolcd(unsigned char info){
+  94            for(int i=0;i<5;i++){
+  95            P0= info[i];
+  96            RS=1;
+  97            EN=1;
+  98            delay(250);
+  99            EN=0;
+ 100            }
+ 101          }
+ 102          
+ 103          void delay(unsigned int x){
+ 104            int i,j;
+ 105            for(i=0;i<x;i++){
+ 106              for(j=0;j<750;j++);
+ 107            }
+ 108          }
+ 109          */
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    186    ----
+   CONSTANT SIZE    =     10    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+C51 COMPILER V9.56.0.0   LCD2                                                              06/15/2017 13:47:00 PAGE 3   
+
+   DATA SIZE        =   ----      15
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

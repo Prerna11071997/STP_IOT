@@ -1,0 +1,118 @@
+C51 COMPILER V9.56.0.0   P3                                                                06/08/2017 15:26:22 PAGE 1   
+
+
+C51 COMPILER V9.56.0.0, COMPILATION OF MODULE P3
+OBJECT MODULE PLACED IN .\Objects\P3.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE P3.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\P3.lst
+                    -) TABS(2) OBJECT(.\Objects\P3.obj)
+
+line level    source
+
+   1          //to observe status of LEDs using expressions
+   2          #include<reg51.h>  //include this library to use various registers
+   3          sbit LED1=P3^2;    //LED1 variable holds data of pin 2 of port 3
+   4          sbit LED2=P3^3;   //LED2 variable holds data of pin 3 of port 3
+   5          int a,b;  //integer data type variables
+   6          void delay(unsigned int i);  //prototype of delay function
+   7          void main()  //main function starts here
+   8          {
+   9   1        for(a=0;a<=1;a++)   //for loop gives value 0 and 1 to 'a' variable
+  10   1        {
+  11   2          for(b=0;b<=1;b++)  //for loop gives value 0 and 1 to 'b' variable 
+  12   2          {  
+  13   3            //LOGICAL AND OPERATOR  
+  14   3            LED1=(a && b);      //LED1 assigned value of result a&&b 
+  15   3            //following code so as to observe variations in LED1 clearly 
+  16   3            LED2=0;      //LED2 ON
+  17   3            delay(150);  //delay function called with input 150
+  18   3            LED2=61;     //LED2 OFF
+  19   3            delay(75);  //delay function called with input 75
+  20   3            //LOGICAL OR OPERATOR
+  21   3            LED2=a||b;  //LED2 assigned value of result a||b 
+  22   3            LED1=0;    
+  23   3            delay(150);
+  24   3            LED1=61;
+  25   3            delay(75);
+  26   3            //LOGICAL NOT OPERATOR
+  27   3            LED1=!(a&&b);
+  28   3            LED2=0;
+  29   3            delay(150);
+  30   3            LED2=61;
+  31   3            delay(75);
+  32   3            //BOOLEAN AND OPERATOR
+  33   3            LED1=a&b;    //LED1 assigned value of result a&b as per truth table
+  34   3            //following code so as to observe variations in LED1 clearly 
+  35   3            LED2=0;      //LED2 ON
+  36   3            delay(150);  //delay function called with input 150
+  37   3            LED2=61;     //LED2 OFF
+  38   3            delay(75);  //delay function called with input 75
+  39   3            //BOOLEAN OR OPERATOR
+  40   3            LED2=a
+  41   3            |b;  //LED2 assigned value of result a|b as per truth table
+  42   3            LED1=0;    
+  43   3            delay(150);
+  44   3            LED1=61;
+  45   3            delay(75);
+  46   3            //BOOLEAN XOR OPERATOR
+  47   3            LED1=a^b;  //LED1 assigned value of result a^b as per truth table
+  48   3            LED2=0;
+  49   3            delay(150);
+  50   3            LED2=61;
+  51   3            delay(75);
+  52   3            //ARITHMETIC '-' OPERATOR
+  53   3            LED1=a-b;  //all other values except 0 are taken as OFF
+  54   3            LED2=0;
+C51 COMPILER V9.56.0.0   P3                                                                06/08/2017 15:26:22 PAGE 2   
+
+  55   3            delay(150);
+  56   3            LED2=61;
+  57   3            delay(75);
+  58   3            //ARITHMETIC '/' OPERATOR
+  59   3            LED2=a/b;  //all other values except 0 are taken as OFF
+  60   3            LED1=0;
+  61   3            delay(150);
+  62   3            LED1=61;
+  63   3            delay(75);
+  64   3            //RELATIONAL > OPERATOR
+  65   3            LED1=0;
+  66   3            if(a>b)
+  67   3              LED2=b;
+  68   3            else 
+  69   3              LED2=a;
+  70   3            delay(150);
+  71   3            LED1=61;
+  72   3            delay(75);
+  73   3            //RELATIONAL >= OPERATOR
+  74   3            LED2=0;
+  75   3            if(a>=b)
+  76   3              LED1=a;
+  77   3            else 
+  78   3              LED1=b;
+  79   3            delay(150);
+  80   3            LED2=61;
+  81   3            delay(75);
+  82   3          }  //for loop of 'b' variable ends
+  83   2        }  //for loop of 'a' variable ends
+  84   1      }  //main function ends
+  85          //definition of delay function
+  86          void delay(unsigned int i)
+  87          {
+  88   1        unsigned int j,k;
+  89   1        for(j=0;j<=i;j++)    // for loop goes from 0 to number passed to the function
+  90   1        for(k=0;k<=7500;k++);  //for loop goes from 0 to 7500
+  91   1      }
+  92                
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    411    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

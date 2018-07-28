@@ -1,0 +1,52 @@
+C51 COMPILER V9.56.0.0   P7                                                                06/06/2017 15:56:39 PAGE 1   
+
+
+C51 COMPILER V9.56.0.0, COMPILATION OF MODULE P7
+OBJECT MODULE PLACED IN .\Objects\P7.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE P7.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\P7.lst
+                    -) TABS(2) OBJECT(.\Objects\P7.obj)
+
+line level    source
+
+   1          #include<reg51.h>  //include library to use registers defined in it
+   2          void delay(unsigned int i);
+   3          void main()
+   4          {
+   5   1        int i=1,j=6,k=72;  //integer variable declaration
+   6   1        int *a;  //pointer variable declaration
+   7   1        a=&i;  //pointer stores the address of variable i
+   8   1        P3=61;  //both LEds OFF
+   9   1        delay(75); //calling delay() function with input 75
+  10   1        P3=*a;  //the port is given the value of pointer
+  11   1        delay(150);  //calling delay() function with input 150 
+  12   1        a=&j; //pointer stores the address of variable j
+  13   1        P3=61;
+  14   1        delay(75);
+  15   1        P3=*a;
+  16   1        delay(150);
+  17   1        a=&k;  //pointer stores the address of variable k
+  18   1        P3=61;
+  19   1        delay(75);
+  20   1        P3=*a;
+  21   1        delay(150);
+  22   1      }
+  23          void delay(unsigned int i)  //definition of delay() function
+  24          {
+  25   1        unsigned int j,k;
+  26   1        for(j=0;j<=i;j++)
+  27   1        for(k=0;k<=7500;k++);
+  28   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    146    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       9
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

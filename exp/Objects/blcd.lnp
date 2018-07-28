@@ -1,0 +1,3 @@
+".\Objects\blcd2.obj" 
+TO ".\Objects\blcd" 
+PRINT(".\Listings\blcd.m51") RAMSIZE(256) 

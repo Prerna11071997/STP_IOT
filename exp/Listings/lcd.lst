@@ -1,0 +1,77 @@
+C51 COMPILER V9.56.0.0   LCD                                                               06/15/2017 14:15:42 PAGE 1   
+
+
+C51 COMPILER V9.56.0.0, COMPILATION OF MODULE LCD
+OBJECT MODULE PLACED IN .\Objects\lcd.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE lcd.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\lcd.l
+                    -st) TABS(2) OBJECT(.\Objects\lcd.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          //sfr info=0x80;
+   3          sbit RS=P2^0;
+   4          sbit EN=P2^2;
+   5          void cmdtolcd(unsigned char cmd);
+   6          void datatolcd(unsigned char info);
+   7          void delay(unsigned int x);
+   8          
+   9          void main(){
+  10   1      //  unsigned int x;
+  11   1        
+  12   1        while(1){
+  13   2          cmdtolcd(0x38);
+  14   2          delay(50);
+  15   2          cmdtolcd(0x0E);
+  16   2          delay(80);
+  17   2          cmdtolcd(0x01);
+  18   2          delay(80);
+  19   2          cmdtolcd(0x80); //to print in the second line the use 0xC0
+  20   2          delay(80);
+  21   2          datatolcd('S');
+  22   2          delay(80);
+  23   2          datatolcd('T');
+  24   2          delay(80);
+  25   2          datatolcd('P');
+  26   2          delay(100);
+  27   2        }
+  28   1      }
+  29          
+  30          void cmdtolcd(unsigned char cmd){
+  31   1        P0=cmd;
+  32   1        RS=0;
+  33   1        EN=1;
+  34   1        delay(1);
+  35   1        EN=0;
+  36   1      }
+  37          void datatolcd(unsigned char info){
+  38   1        P0= info;
+  39   1        RS=1;
+  40   1        EN=1;
+  41   1        delay(1);
+  42   1        EN=0;
+  43   1      }
+  44          
+  45          void delay(unsigned int x){
+  46   1        unsigned int i,j;
+  47   1        for(i=0;i<x;i++)
+  48   1        {
+  49   2          for(j=0;j<1275;j++);
+  50   2        }
+  51   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+C51 COMPILER V9.56.0.0   LCD                                                               06/15/2017 14:15:42 PAGE 2   
+
+   CODE SIZE        =    134    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

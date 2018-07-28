@@ -1,0 +1,30 @@
+29-05-17 17:56:41 00188 00000AE4     inst.exe _tWinMain Entry
+29-05-17 17:56:41 00188 00000AE4     inst.exe _tWinMain Vista above or not admin so calling MyShellExec
+29-05-17 17:56:41 00188 00000AE4     inst.exe MyShellExec Entry
+29-05-17 17:56:41 00188 00000AE4     inst.exe MyShellExec Initializing info
+29-05-17 17:56:41 00188 00000AE4     inst.exe MyShellExec ***********************
+29-05-17 17:56:41 00188 00000AE4     inst.exe MyShellExec Exe Path(F:\Upgrade\64\UPGRADE.EXE)
+29-05-17 17:56:41 00188 00000AE4     inst.exe MyShellExec Action(open)
+29-05-17 17:56:41 00188 00000AE4     inst.exe MyShellExec Command line()
+29-05-17 17:56:41 00188 00000AE4     inst.exe MyShellExec ***********************
+29-05-17 17:56:41 00188 00000AE4     inst.exe MyShellExec Calling ShellExecuteEx
+29-05-17 17:56:41 00188 00000AE4     inst.exe MyShellExec Afetr ShellExecuteEx
+29-05-17 17:56:41 00188 00000AE4     inst.exe MyShellExec Waiting on process...
+29-05-17 18:34:09 00188 00000AE4     inst.exe MyShellExec Waiting complited
+29-05-17 18:34:09 00188 00000AE4     inst.exe MyShellExec Exit
+29-05-17 18:34:09 00188 00000AE4     inst.exe _tWinMain Exit
+29-05-17 18:46:16 03484 00000F48     inst.exe _tWinMain Entry
+29-05-17 18:46:16 03484 00000F48     inst.exe _tWinMain Vista above or not admin so calling MyShellExec
+29-05-17 18:46:16 03484 00000F48     inst.exe MyShellExec Entry
+29-05-17 18:46:16 03484 00000F48     inst.exe MyShellExec Initializing info
+29-05-17 18:46:16 03484 00000F48     inst.exe MyShellExec ***********************
+29-05-17 18:46:16 03484 00000F48     inst.exe MyShellExec Exe Path(F:\Upgrade\64\UPGRADE.EXE)
+29-05-17 18:46:16 03484 00000F48     inst.exe MyShellExec Action(open)
+29-05-17 18:46:16 03484 00000F48     inst.exe MyShellExec Command line()
+29-05-17 18:46:16 03484 00000F48     inst.exe MyShellExec ***********************
+29-05-17 18:46:16 03484 00000F48     inst.exe MyShellExec Calling ShellExecuteEx
+29-05-17 18:46:17 03484 00000F48     inst.exe MyShellExec Afetr ShellExecuteEx
+29-05-17 18:46:17 03484 00000F48     inst.exe MyShellExec Waiting on process...
+29-05-17 18:49:05 03484 00000F48     inst.exe MyShellExec Waiting complited
+29-05-17 18:49:05 03484 00000F48     inst.exe MyShellExec Exit
+29-05-17 18:49:05 03484 00000F48     inst.exe _tWinMain Exit

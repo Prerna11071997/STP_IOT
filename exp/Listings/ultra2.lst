@@ -1,0 +1,81 @@
+C51 COMPILER V9.56.0.0   ULTRA2                                                            06/16/2017 15:30:43 PAGE 1   
+
+
+C51 COMPILER V9.56.0.0, COMPILATION OF MODULE ULTRA2
+OBJECT MODULE PLACED IN .\Objects\ultra2.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ultra2.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\ul
+                    -tra2.lst) TABS(2) OBJECT(.\Objects\ultra2.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          sbit trig=P0^0;
+   3          sbit echo=P0^1;
+   4          sbit led1=P3^2;
+   5          sbit led2=P3^3;
+   6          void delay(unsigned int x);
+   7          void send_pulse();
+   8          int cms;
+   9          
+  10          void send_pulse(){
+  11   1        TH0=0x00;
+  12   1        TL0=0x00;
+  13   1        trig=1;
+  14   1        delay(10);
+  15   1        trig=0;
+  16   1      }
+  17          
+  18          void get_range(){
+  19   1        long int timer_val;
+  20   1        send_pulse();
+  21   1        while(!INT0);
+  22   1        while(INT0);
+  23   1        
+  24   1        timer_val=(TH0<<8)+TL0;
+  25   1        
+  26   1      
+  27   1        if(timer_val<38000){
+  28   2          cms=timer_val/59;
+  29   2          if(cms!=0)
+  30   2          {
+  31   3            led1=0;
+  32   3          }
+  33   2        
+  34   2        }else{
+  35   2        led2=0;
+  36   2        }
+  37   1      }
+  38          
+  39          void main(){
+  40   1        TMOD=0x44;
+  41   1        TR0=1;
+  42   1        TH0=0x00;
+  43   1        TL0=0x00;
+  44   1        while(1){
+  45   2        get_range();
+  46   2          delay(2);
+  47   2        }
+  48   1      }
+  49          
+  50          void delay(unsigned int msec)
+  51          {
+  52   1        int i,j;
+  53   1        for(i=0;i<msec;i++)
+  54   1        for(j=0;j<1275;j++);
+C51 COMPILER V9.56.0.0   ULTRA2                                                            06/16/2017 15:30:43 PAGE 2   
+
+  55   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    154    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

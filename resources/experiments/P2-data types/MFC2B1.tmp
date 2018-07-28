@@ -1,0 +1,30 @@
+#include<reg51.h>
+int a;
+char c;
+void delay(unsigned int i);
+
+void main(void)
+	/*
+{
+		for(a=0;a<=7;a++)
+	  {
+			P3=a;			//LED ON
+		  delay(75);
+		}
+	
+}*/
+{
+	for(c='a';c<='z';c++)
+	{P3=c;
+		delay(75);
+	}
+}
+	
+
+void delay(unsigned int i)
+	{
+		unsigned int k;
+	  unsigned int j;
+		for(j=0;j<i;j++)
+		for(k=0;k<750;k++);
+	}

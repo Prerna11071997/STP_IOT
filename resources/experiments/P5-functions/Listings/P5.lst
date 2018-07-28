@@ -1,0 +1,104 @@
+C51 COMPILER V9.56.0.0   P5                                                                06/06/2017 15:18:05 PAGE 1   
+
+
+C51 COMPILER V9.56.0.0, COMPILATION OF MODULE P5
+OBJECT MODULE PLACED IN .\Objects\P5.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE P5.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\P5.lst
+                    -) TABS(2) OBJECT(.\Objects\P5.obj)
+
+line level    source
+
+   1          #include<reg51.h>    //include library to access registers defined in it
+   2          int a=1,b=3,c,d; //global integer variabled
+   3          //function prototypes
+   4          void delay(unsigned int i);  //prototype of delay function
+   5          int add(); //no parameters passed but returns an integer value
+   6          int subtract(int, int);   //integer data types passed to the function and returns an integer value
+   7          void multiply(); //no parameters passed and returns no value
+   8          void divide(); //no parameters passed and returns no value
+   9          int recursive(int);  //an integer parameter passed and returns an integer value
+  10          void main()  //msin function starts 
+  11          {
+  12   1        c=add();     //calling function add() and giving the value to variable c
+  13   1        P3=0;  //LEds ON
+  14   1        delay(150); //delay function called with input 150
+  15   1        P3=c;  //return value of add() function given to port
+  16   1        delay(150);
+  17   1        d=subtract(c,a);   //calling function subtract() by passing parameters and assigning return value to vari
+             -able d
+  18   1        P3=61;  //LEDs OFF
+  19   1        delay(150);
+  20   1        P3=d;  //return value of subtract() function given to port
+  21   1        delay(150);
+  22   1        multiply();  //multiply() function called
+  23   1        divide();  //divide() function called
+  24   1        c=recursive(a);  //recursive() function called by passing a parameter and return value assigned to variab
+             -le c
+  25   1        P3=61;  
+  26   1        delay(150);
+  27   1        P3=c;  //return value of recursive() function given to port
+  28   1        delay(75);
+  29   1      } 
+  30          int add()   //definition of add() function
+  31          {
+  32   1        int c;   //local variable to this function
+  33   1        c=a+b;
+  34   1        return c;
+  35   1      }
+  36          int subtract(int a,int b)  //definition of subtract() function
+  37          {
+  38   1        int c;
+  39   1        c=a-b;
+  40   1        return c;
+  41   1      }
+  42          void multiply()  //definition of multiply() function
+  43          {
+  44   1        int a=1,b=1,c;
+  45   1        c=a*b;
+  46   1        P3=61;
+  47   1        delay(150);
+  48   1        P3=c; 
+  49   1        delay(150);
+  50   1      }
+  51          void divide()  //definition of divide() function
+  52          {
+C51 COMPILER V9.56.0.0   P5                                                                06/06/2017 15:18:05 PAGE 2   
+
+  53   1        int a=1,b=1,c;
+  54   1        c=a/b;
+  55   1        P3=61;
+  56   1        delay(150);
+  57   1        P3=c;
+  58   1        delay(150);
+  59   1      }
+  60          int recursive(int a)  //definition of recursive() function
+  61          {
+  62   1        int c;
+  63   1        while(a>=0)   //loop works till value of a is greater or equal to 0
+  64   1        {
+  65   2          c = a*1;
+  66   2          recursive(--a); //calling the recursive function from its body by decremented value of a
+  67   2        }
+  68   1        return c;  //returning the value to the calling parameter
+  69   1      }
+  70          void delay(unsigned int i)
+  71          {
+  72   1        unsigned int j;
+  73   1        unsigned int k;
+  74   1        for(j=0;j<=i;j++)
+  75   1        for(k=0;k<=7500;k++);
+  76   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    231    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      8       8
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

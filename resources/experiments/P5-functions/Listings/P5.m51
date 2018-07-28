@@ -1,0 +1,229 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        06/06/2017  15:18:05  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\P5.obj TO .\Objects\P5 PRINT (.\Listings\P5.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\P5.obj (P5)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?IMUL)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?SIDIV)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?UIDIV)
+
+
+LINK MAP OF MODULE:  .\Objects\P5 (P5)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0008H     UNIT         ?DT?P5
+            DATA    0010H     0004H     UNIT         _DATA_GROUP_
+            IDATA   0014H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     009DH     UNIT         ?C?LIB_CODE
+            CODE    089DH     008CH     UNIT         ?C_C51STARTUP
+            CODE    0929H     004CH     UNIT         ?PR?MAIN?P5
+            CODE    0975H     0029H     UNIT         ?PR?_RECURSIVE?P5
+            CODE    099EH     0027H     UNIT         ?PR?_DELAY?P5
+            CODE    09C5H     001CH     UNIT         ?PR?MULTIPLY?P5
+            CODE    09E1H     001CH     UNIT         ?PR?DIVIDE?P5
+            CODE    09FDH     000BH     UNIT         ?PR?ADD?P5
+            CODE    0A08H     0009H     UNIT         ?C_INITSEG
+            CODE    0A11H     0008H     UNIT         ?PR?_SUBTRACT?P5
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\P5 (P5)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?P5
+  +--> ?C_INITSEG
+
+?PR?MAIN?P5                    -----    -----
+  +--> ?PR?ADD?P5
+  +--> ?PR?_DELAY?P5
+  +--> ?PR?_SUBTRACT?P5
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/06/2017  15:18:05  PAGE 2
+
+
+  +--> ?PR?MULTIPLY?P5
+  +--> ?PR?DIVIDE?P5
+  +--> ?PR?_RECURSIVE?P5
+
+?PR?MULTIPLY?P5                0010H    0002H
+  +--> ?PR?_DELAY?P5
+
+?PR?DIVIDE?P5                  0010H    0002H
+  +--> ?PR?_DELAY?P5
+
+?PR?_RECURSIVE?P5              0010H    0004H
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\P5 (P5)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        P5
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00B0H         PUBLIC        P3
+  C:09C5H         PUBLIC        multiply
+  C:09A5H         PUBLIC        _delay
+  C:0929H         PUBLIC        main
+  C:09FDH         PUBLIC        add
+  C:0975H         PUBLIC        _recursive
+  D:0008H         PUBLIC        a
+  D:000AH         PUBLIC        b
+  D:000CH         PUBLIC        c
+  D:000EH         PUBLIC        d
+  C:0A11H         PUBLIC        _subtract
+  C:09E1H         PUBLIC        divide
+  -------         PROC          MAIN
+  C:0929H         LINE#         10
+  C:0929H         LINE#         11
+  C:0929H         LINE#         12
+  C:0930H         LINE#         13
+  C:0933H         LINE#         14
+  C:0939H         LINE#         15
+  C:093CH         LINE#         16
+  C:093FH         LINE#         17
+  C:094EH         LINE#         18
+  C:094EH         LINE#         19
+  C:0951H         LINE#         20
+  C:0954H         LINE#         21
+  C:0957H         LINE#         22
+  C:095AH         LINE#         23
+  C:095DH         LINE#         24
+  C:0968H         LINE#         25
+  C:0968H         LINE#         26
+  C:096BH         LINE#         27
+  C:096EH         LINE#         28
+  -------         ENDPROC       MAIN
+  -------         PROC          ADD
+  -------         DO            
+  D:0006H         SYMBOL        c
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/06/2017  15:18:05  PAGE 3
+
+
+  -------         ENDDO         
+  C:09FDH         LINE#         30
+  C:09FDH         LINE#         31
+  C:09FDH         LINE#         33
+  C:0A07H         LINE#         34
+  C:0A07H         LINE#         35
+  -------         ENDPROC       ADD
+  -------         PROC          _SUBTRACT
+  D:0006H         SYMBOL        a
+  D:0004H         SYMBOL        b
+  -------         DO            
+  D:0006H         SYMBOL        c
+  -------         ENDDO         
+  C:0A11H         LINE#         36
+  C:0A11H         LINE#         37
+  C:0A11H         LINE#         39
+  C:0A18H         LINE#         40
+  C:0A18H         LINE#         41
+  -------         ENDPROC       _SUBTRACT
+  -------         PROC          MULTIPLY
+  -------         DO            
+  D:0006H         SYMBOL        a
+  D:0004H         SYMBOL        b
+  D:0010H         SYMBOL        c
+  -------         ENDDO         
+  C:09C5H         LINE#         42
+  C:09C5H         LINE#         43
+  C:09C5H         LINE#         44
+  C:09CDH         LINE#         45
+  C:09D4H         LINE#         46
+  C:09D4H         LINE#         47
+  C:09D7H         LINE#         48
+  C:09DAH         LINE#         49
+  -------         ENDPROC       MULTIPLY
+  -------         PROC          DIVIDE
+  -------         DO            
+  D:0006H         SYMBOL        a
+  D:0004H         SYMBOL        b
+  D:0010H         SYMBOL        c
+  -------         ENDDO         
+  C:09E1H         LINE#         51
+  C:09E1H         LINE#         52
+  C:09E1H         LINE#         53
+  C:09E9H         LINE#         54
+  C:09F0H         LINE#         55
+  C:09F0H         LINE#         56
+  C:09F3H         LINE#         57
+  C:09F6H         LINE#         58
+  -------         ENDPROC       DIVIDE
+  -------         PROC          _RECURSIVE
+  D:0010H         SYMBOL        a
+  -------         DO            
+  D:0012H         SYMBOL        c
+  -------         ENDDO         
+  C:0975H         LINE#         60
+  C:0979H         LINE#         61
+  C:0979H         LINE#         63
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/06/2017  15:18:05  PAGE 4
+
+
+  C:0982H         LINE#         64
+  C:0982H         LINE#         65
+  C:0988H         LINE#         66
+  C:0997H         LINE#         67
+  C:0999H         LINE#         68
+  C:099DH         LINE#         69
+  -------         ENDPROC       _RECURSIVE
+  C:099EH         SYMBOL        L?0020
+  C:09A1H         SYMBOL        L?0021
+  -------         PROC          L?0019
+  -------         ENDPROC       L?0019
+  C:099EH         SYMBOL        L?0020
+  C:09A1H         SYMBOL        L?0021
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        i
+  -------         DO            
+  D:0004H         SYMBOL        j
+  D:0002H         SYMBOL        k
+  -------         ENDDO         
+  C:09A5H         LINE#         70
+  C:09A5H         LINE#         71
+  C:09A5H         LINE#         74
+  C:09AFH         LINE#         75
+  C:09C4H         LINE#         76
+  -------         ENDPROC       _DELAY
+  -------         ENDMOD        P5
+
+  -------         MODULE        ?C?IMUL
+  C:0800H         PUBLIC        ?C?IMUL
+  -------         ENDMOD        ?C?IMUL
+
+  -------         MODULE        ?C?SIDIV
+  C:0812H         PUBLIC        ?C?SIDIV
+  -------         ENDMOD        ?C?SIDIV
+
+  -------         MODULE        ?C?UIDIV
+  C:0848H         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00EFH BYTE (11%) *
+******************************************************************************
+
+Program Size: data=21.0 xdata=0 code=540
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

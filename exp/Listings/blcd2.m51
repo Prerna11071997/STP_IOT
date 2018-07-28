@@ -1,0 +1,164 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        06/16/2017  15:12:08  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\ultra2.obj TO .\Objects\blcd2 PRINT (.\Listings\blcd2.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\ultra2.obj (ULTRA2)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?SLDIV)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?SLCMP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?ULDIV)
+
+
+LINK MAP OF MODULE:  .\Objects\blcd2 (ULTRA2)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0004H     UNIT         _DATA_GROUP_
+            DATA    000CH     0002H     UNIT         ?DT?ULTRA2
+            IDATA   000EH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     00E4H     UNIT         ?C?LIB_CODE
+            CODE    08E4H     0054H     UNIT         ?PR?GET_RANGE?ULTRA2
+            CODE    0938H     0044H     UNIT         ?C?LDIV
+            CODE    097CH     0020H     UNIT         ?PR?_DELAY?ULTRA2
+            CODE    099CH     0016H     UNIT         ?PR?MAIN?ULTRA2
+            CODE    09B2H     0010H     UNIT         ?PR?SEND_PULSE?ULTRA2
+            CODE    09C2H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\blcd2 (ULTRA2)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?ULTRA2
+
+?PR?MAIN?ULTRA2                -----    -----
+  +--> ?PR?GET_RANGE?ULTRA2
+  +--> ?PR?_DELAY?ULTRA2
+
+?PR?GET_RANGE?ULTRA2           0008H    0004H
+  +--> ?PR?SEND_PULSE?ULTRA2
+
+?PR?SEND_PULSE?ULTRA2          -----    -----
+  +--> ?PR?_DELAY?ULTRA2
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/16/2017  15:12:08  PAGE 2
+
+
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\blcd2 (ULTRA2)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ULTRA2
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:00B0H         PUBLIC        P3
+  C:097CH         PUBLIC        _delay
+  B:00B0H.2       PUBLIC        INT0
+  C:099CH         PUBLIC        main
+  C:08E4H         PUBLIC        get_range
+  D:0089H         PUBLIC        TMOD
+  B:0080H.0       PUBLIC        trig
+  C:09B2H         PUBLIC        send_pulse
+  D:000CH         PUBLIC        cms
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  B:0088H.4       PUBLIC        TR0
+  B:00B0H.2       PUBLIC        led1
+  B:00B0H.3       PUBLIC        led2
+  -------         PROC          SEND_PULSE
+  C:09B2H         LINE#         10
+  C:09B2H         LINE#         11
+  C:09B5H         LINE#         12
+  C:09B7H         LINE#         13
+  C:09B9H         LINE#         14
+  C:09BFH         LINE#         15
+  C:09C1H         LINE#         16
+  -------         ENDPROC       SEND_PULSE
+  -------         PROC          GET_RANGE
+  -------         DO            
+  D:0008H         SYMBOL        timer_val
+  -------         ENDDO         
+  C:08E4H         LINE#         18
+  C:08E4H         LINE#         20
+  C:08E7H         LINE#         21
+  C:08EAH         LINE#         22
+  C:08EDH         LINE#         24
+  C:0904H         LINE#         27
+  C:0917H         LINE#         28
+  C:092CH         LINE#         29
+  C:0932H         LINE#         30
+  C:0932H         LINE#         31
+  C:0934H         LINE#         32
+  C:0934H         LINE#         34
+  C:0935H         LINE#         35
+  C:0937H         LINE#         36
+  C:0937H         LINE#         37
+  -------         ENDPROC       GET_RANGE
+  -------         PROC          MAIN
+  C:099CH         LINE#         39
+  C:099CH         LINE#         40
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/16/2017  15:12:08  PAGE 3
+
+
+  C:099FH         LINE#         41
+  C:09A1H         LINE#         42
+  C:09A4H         LINE#         43
+  C:09A6H         LINE#         44
+  C:09A6H         LINE#         45
+  C:09A9H         LINE#         46
+  C:09B0H         LINE#         47
+  -------         ENDPROC       MAIN
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        msec
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:097CH         LINE#         50
+  C:097CH         LINE#         51
+  C:097CH         LINE#         53
+  C:0986H         LINE#         54
+  C:099BH         LINE#         55
+  -------         ENDPROC       _DELAY
+  -------         ENDMOD        ULTRA2
+
+  -------         MODULE        ?C?SLDIV
+  C:0938H         PUBLIC        ?C?SLDIV
+  -------         ENDMOD        ?C?SLDIV
+
+  -------         MODULE        ?C?SLCMP
+  C:0800H         PUBLIC        ?C?SLCMP
+  -------         ENDMOD        ?C?SLCMP
+
+  -------         MODULE        ?C?ULDIV
+  C:0852H         PUBLIC        ?C?ULDIV
+  -------         ENDMOD        ?C?ULDIV
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 009AH BYTE ( 7%) *
+******************************************************************************
+
+Program Size: data=15.0 xdata=0 code=465
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
